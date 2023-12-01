@@ -8,4 +8,5 @@ namespace InternetBanking.Model
         public string? Id { get; set; }
         public string? AccTypeName { get; set; }
         public string? Description { get; set; }
+    }
 }
