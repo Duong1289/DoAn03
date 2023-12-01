@@ -1,6 +1,9 @@
-﻿namespace InternetBanking.Model
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace InternetBanking.Model
 {
-    public class InternetBankingContext
+    public class InternetBankingContext:DbContext
     {
     }
+    public Db
 }
