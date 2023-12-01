@@ -1,8 +1,10 @@
-﻿namespace InternetBanking.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace InternetBanking.Model
 {
     public class Branch
     {
-        
+        [Key]
         public string? BranchId { get; set; }
         public string? Name { get; set; }
         public string? Address { get; set; }

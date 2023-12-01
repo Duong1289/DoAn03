@@ -1,7 +1,10 @@
-﻿namespace InternetBanking.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace InternetBanking.Model
 {
     public class HelpRequest
     {
+        [Key]
         public string? Id { get; set; }
         public string? Acc {  get; set; }
         public string? PersonalId { get; set; }

@@ -1,4 +1,6 @@
-﻿namespace InternetBanking.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace InternetBanking.Model
 {
     public class Employee
     {

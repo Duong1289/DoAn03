@@ -1,7 +1,10 @@
-﻿namespace InternetBanking.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace InternetBanking.Model
 {
     public class Customer
     {
+        [Key]
         public string? PersonalId { get; set; }
         public string? Username { get; set; }
         public string? Password { get; set; }

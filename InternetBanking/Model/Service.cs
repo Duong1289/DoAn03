@@ -1,8 +1,10 @@
-﻿namespace InternetBanking.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace InternetBanking.Model
 {
     public class Service
     {
-        
+        [Key]
         public string? Id { get; set; }
         public string? ServiceName { get; set; }
         public string? ServiceType { get; set; }
