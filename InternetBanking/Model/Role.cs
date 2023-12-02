@@ -7,5 +7,6 @@ namespace InternetBanking.Model
         [Key]
         public string? RoleId { get; set; }
         public string? RoleName { get; set;}
+        public ICollection<Employee> Employees { get; set; }
     }
 }

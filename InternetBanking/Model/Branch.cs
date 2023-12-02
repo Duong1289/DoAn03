@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternetBanking.Model
 {
@@ -11,6 +12,8 @@ namespace InternetBanking.Model
         public string? Location { get; set; }
         public string? Phone { get; set; }
         public string? Email { get; set; }
+        [ForeignKey("Banks")]
         public string? BankId { get; set; }
+        public ICollection<Employee>? Employees { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternetBanking.Model
 {
@@ -7,10 +8,12 @@ namespace InternetBanking.Model
         [Key]
         public string? Id { get; set; }
         public string? ServiceName { get; set; }
-        public string? ServiceType { get; set; }
+        [ForeignKey("ServicesTypes")]
+        public string? ServiceTypeId { get; set; }
         public string? Content { get; set;}
         public double? Amount { get; set; }
-        public string? EmpId { get; set; }
+        [ForeignKey("Employees")]
+        public string? EmployeeID { get; set; }
         public string? AccountNumber { get; set;}
         public string? PersonalId { get; set; }
         public double? Interest { get; set; }

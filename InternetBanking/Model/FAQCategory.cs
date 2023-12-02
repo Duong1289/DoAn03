@@ -7,5 +7,6 @@ namespace InternetBanking.Model
         [Key]
         public string? Id { get; set; }
         public string? CategoryName { get; set; }
+        public ICollection<FAQ> FAQ { get; set; }
     }
 }

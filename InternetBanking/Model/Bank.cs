@@ -10,5 +10,7 @@ namespace InternetBanking.Model
         public string? Phone { get; set; }
         public string? Email { get; set; }
         public string? Address { get; set; }
+        public ICollection<Customer>? Customers { get; set; }
+        public ICollection<Employee>? Employees { get; set; }
     }
 }
