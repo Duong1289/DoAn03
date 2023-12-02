@@ -14,10 +14,12 @@ namespace InternetBanking.Model
         public double? Amount { get; set; }
         [ForeignKey("Employees")]
         public string? EmployeeID { get; set; }
+        [ForeignKey("Accounts")]
         public string? AccountNumber { get; set;}
-        public string? PersonalId { get; set; }
+        [ForeignKey("Customers")]
+        public string? CustomerPersonalId { get; set; }
         public double? Interest { get; set; }
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }= DateTime.Now;
         public bool? Status { get; set; }
     }
 }
