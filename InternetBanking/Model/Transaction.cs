@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternetBanking.Model
@@ -6,14 +7,36 @@ namespace InternetBanking.Model
     public class Transaction
     {
         [Key]
+        [Required]
+        [MaxLength(5)]
         public string? Id {  get; set; }
+        
+
         [ForeignKey("Accounts")]
+        [Required]
+        [MaxLength(5)]
         public string? SenderAccountNumber { get; set; }
+
+
         [ForeignKey("Accounts")]
+        [Required]
+        [MaxLength(5)]
         public string? ReceiverAccountNumber { get; set; }
-        public DateTime TransactionDate { get; set; }
+
+
+        [Required]
         public double? Amount { get; set;}
+
+        [Required]
+        [MaxLength(1000)]
         public string? Content { get; set;}
+
+
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime TransactionDate { get; set; }
+
+
         public bool Validation { get; set; }
 
     }
