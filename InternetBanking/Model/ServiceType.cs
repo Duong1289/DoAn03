@@ -6,8 +6,7 @@ namespace InternetBanking.Model
     {
         [Key]
         [Required]
-        [MaxLength(5)]
-        public string? Id { get; set; }
+        public int? Id { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -16,8 +15,7 @@ namespace InternetBanking.Model
         [Required]
         [MaxLength(500)]
         public string? Description { get; set;}
-
-
+        
         public ICollection<Service>? Services { get; set; }
     }
 }

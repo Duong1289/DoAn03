@@ -6,9 +6,7 @@ namespace InternetBanking.Model
     public class FAQ
     {
         [Key]
-        [Required]
-        [MaxLength(5)]
-        public string? Id { get; set; }
+        public int? Id { get; set; }
 
         [Required]
         [MaxLength(300)]
@@ -21,8 +19,6 @@ namespace InternetBanking.Model
 
         [ForeignKey("FAQCategories")]
         [Required]
-        [MaxLength(5)]
-        public string? FAQCategoryId { get; set; }
-        
+        public int? FAQCategoryId { get; set; }
     }
 }

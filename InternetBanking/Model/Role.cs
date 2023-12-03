@@ -5,9 +5,7 @@ namespace InternetBanking.Model
     public class Role
     {
         [Key]
-        [Required]
-        [MaxLength(5)]
-        public string? RoleId { get; set; }
+        public int? RoleId { get; set; }
 
         [Required]
         [MaxLength(50)]

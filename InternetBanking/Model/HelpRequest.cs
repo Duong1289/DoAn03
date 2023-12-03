@@ -7,14 +7,12 @@ namespace InternetBanking.Model
     public class HelpRequest
     {
         [Key]
-        [Required]
-        [MaxLength(5)]
-        public string? Id { get; set; }
+        public int? Id { get; set; }
 
+        [ForeignKey("Accounts")]
         [Required]
-        [MaxLength(5)]
-        public string? AccId {  get; set; }
-
+        [MaxLength(20)]
+        public string? AccountId {  get; set; }
 
         [ForeignKey("Customers")]
         [Required]
@@ -24,19 +22,20 @@ namespace InternetBanking.Model
 
         [ForeignKey("Employees")]
         [Required]
-        [MaxLength(5)]
-        public string? EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
 
         [ForeignKey("HelpRequestTypes")]
         [Required]
-        [MaxLength(5)]
-        public string? RequestTypeId { get; set; }
-
+        public int? RequestTypeId { get; set; }
+        
+        [ForeignKey("Images")]
+        [Required]
+        public int? ImageId { get; set; }
 
         [Required]
         [MaxLength(1000)]
         public string? Content {  get; set; }
-
+        
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? CreatedDate { get; set; } = DateTime.Now;

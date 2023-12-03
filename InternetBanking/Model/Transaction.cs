@@ -8,21 +8,18 @@ namespace InternetBanking.Model
     {
         [Key]
         [Required]
-        [MaxLength(5)]
+        //Ma giao dich tu sinh TTDH-yyyymmdd_radom text...
         public string? Id {  get; set; }
         
-
         [ForeignKey("Accounts")]
         [Required]
-        [MaxLength(5)]
+        [MaxLength(20)]
         public string? SenderAccountNumber { get; set; }
 
-
         [ForeignKey("Accounts")]
         [Required]
-        [MaxLength(5)]
+        [MaxLength(20)]
         public string? ReceiverAccountNumber { get; set; }
-
 
         [Required]
         public double? Amount { get; set;}
@@ -31,11 +28,9 @@ namespace InternetBanking.Model
         [MaxLength(1000)]
         public string? Content { get; set;}
 
-
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime TransactionDate { get; set; }
-
 
         public bool Validation { get; set; }
 

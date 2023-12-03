@@ -5,10 +5,7 @@ namespace InternetBanking.Model
     public class AccountType
     {
         [Key]
-        [Required]
-        [MaxLength(5)]
-        public string? Id { get; set; }
-
+        public int? Id { get; set; }
 
         [Required]
         [MaxLength(20)]

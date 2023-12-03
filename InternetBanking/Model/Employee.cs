@@ -6,16 +6,18 @@ namespace InternetBanking.Model
     public class Employee
     {
         [Key]
+        public int? Id { get; set; }
+        
         [Required]
-        [MaxLength(5)]
-        public string? EmpId { get; set; }
+        [MaxLength(20)]
+        public string? PersonalId { get; set; }
 
         [Required]
         [MaxLength(20)]
         public string? Username { get; set; }
 
         [Required]
-        [MaxLength(20)]
+        [MaxLength()]
         public string? Password { get; set; }
 
         [Required]
@@ -30,6 +32,7 @@ namespace InternetBanking.Model
         [MaxLength(15)]
         public string? Phone { get; set; }
 
+        //block/ublock
         [Required]
         public bool? Status { get; set; }
 
@@ -39,13 +42,12 @@ namespace InternetBanking.Model
 
         [Required]
         [MaxLength(5)]
-        [ForeignKey(nameof(EmpId))]
+        [ForeignKey(nameof(Id))]
         public string? ManageBy { get; set;}
 
         [Required]
-        [MaxLength(5)]
-        [ForeignKey("Branchs")]
-        public string? BranchId { get; set; }
+        [ForeignKey("Branches")]
+        public int? BranchId { get; set; }
         public ICollection<HelpRequest>? HelpRequests { get; set; }
         public ICollection<Service>? Services { get; set; }
 

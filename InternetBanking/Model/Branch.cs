@@ -6,13 +6,11 @@ namespace InternetBanking.Model
     public class Branch
     {
         [Key]
-        [Required]
-        [MaxLength(5)]
-        public string? BranchId { get; set; }
+        public int? Id { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string? Name { get; set; }
+        public string? BranchName { get; set; }
 
         [Required]
         [MaxLength(150)]
@@ -31,10 +29,8 @@ namespace InternetBanking.Model
         public string? Email { get; set; }
 
         [Required]
-        [MaxLength(5)]
         [ForeignKey("Banks")]
-        public string? BankId { get; set; }
-
+        public int? BankId { get; set; }
 
         public ICollection<Employee>? Employees { get; set; }
     }

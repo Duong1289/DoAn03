@@ -5,9 +5,7 @@ namespace InternetBanking.Model
     public class HelpRequestType
     {
         [Key]
-        [Required]
-        [MaxLength(5)]
-        public string? RequestTypeId { get; set; }
+        public int? RequestTypeId { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -16,7 +14,6 @@ namespace InternetBanking.Model
         [Required]
         [MaxLength(500)]
         public string? Description { get; set;}
-
 
         public ICollection<HelpRequest>? HelpRequests { get; set; }
     }

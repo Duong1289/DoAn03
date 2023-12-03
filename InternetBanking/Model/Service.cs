@@ -6,9 +6,7 @@ namespace InternetBanking.Model
     public class Service
     {
         [Key]
-        [Required]
-        [MaxLength(5)]
-        public string? Id { get; set; }
+        public int? Id { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -17,42 +15,36 @@ namespace InternetBanking.Model
 
         [ForeignKey("ServicesTypes")]
         [Required]
-        [MaxLength(5)]
-        public string? ServiceTypeId { get; set; }
+        public int? ServiceTypeId { get; set; }
 
         [Required]
         [MaxLength(1000)]
         public string? Content { get; set;}
 
         [Required]
+        // >= 0
         public double? Amount { get; set; }
 
 
         [ForeignKey("Employees")]
         [Required]
-        [MaxLength(5)]
-        public string? EmployeeID { get; set; }
+        public int? EmployeeId { get; set; }
 
 
         [ForeignKey("Accounts")]
         [Required]
-        [MaxLength(5)]
+        [MaxLength(20)]
         public string? AccountNumber { get; set;}
 
 
         [ForeignKey("Customers")]
         [Required]
-        [MaxLength(20)]
         public string? CustomerPersonalId { get; set; }
-
-        [Required]
-        public double? Interest { get; set; }
-
+        
+        
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? CreatedDate { get; set; }= DateTime.Now;
 
-        [Required]
-        public bool? Status { get; set; }
     }
 }

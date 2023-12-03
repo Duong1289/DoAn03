@@ -5,9 +5,7 @@ namespace InternetBanking.Model
     public class Bank
     {
         [Key]
-        [Required]
-        [MaxLength(5)]
-        public string? Id { get; set; }
+        public int? Id { get; set; }
 
         [Required]
         [MaxLength(30)]
@@ -20,7 +18,6 @@ namespace InternetBanking.Model
         [Required]
         [MaxLength(200)]
         public string? Email { get; set; }
-
 
         [Required]
         [MaxLength(250)]
