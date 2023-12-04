@@ -28,9 +28,7 @@ namespace InternetBanking.Model
         [Required]
         public int? RequestTypeId { get; set; }
         
-        [ForeignKey("Images")]
-        [Required]
-        public int? ImageId { get; set; }
+
 
         [Required]
         [MaxLength(1000)]

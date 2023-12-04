@@ -18,13 +18,10 @@ namespace InternetBanking.Model
         public string? Username { get; set; }
 
         
-        [Required]
-        [MaxLength(20)]
-        public string? Password { get; set; }
+        //[Required]
+        //[MaxLength(20)]
+        //public string? Password { get; set; }
 
-        [MaxLength(1000)]
-        [ForeignKey("Images")]
-        public int? ImageId { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -38,9 +35,9 @@ namespace InternetBanking.Model
         [MaxLength(50)]
         public string? Email { get; set; }
 
-        [Required]
-        [MaxLength(15)]
-        public string? Phone { get; set; }
+        //[Required]
+        //[MaxLength(15)]
+        //public string? Phone { get; set; }
 
         [Required]
         [MaxLength(250)]
