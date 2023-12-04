@@ -26,19 +26,20 @@ namespace InternetBanking.Model
         public DbSet<Image>? Images { get; set; }
         public DbSet<Loan>? Loans { get; set; }
         public DbSet<LoanType>? LoanTypes { get; set; }
-    }
-``    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        base.OnModelCreating(builder);
-        //cắt bỏ chữ AspNet trong tên của table
-        var entities = builder.Model.GetEntityTypes();
-        foreach (var entityType in entities)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            string name = entityType.Name;
-            if (name!.StartsWith("AspNet"))
+            base.OnModelCreating(builder);
+            //cắt bỏ chữ AspNet trong tên của table
+            var entities = builder.Model.GetEntityTypes();
+            foreach (var entityType in entities)
             {
-                entityType.SetTableName(name.Substring(6));
+                string name = entityType.Name;
+                if (name!.StartsWith("AspNet"))
+                {
+                    entityType.SetTableName(name.Substring(6));
+                }
             }
         }
     }
+    
 }
