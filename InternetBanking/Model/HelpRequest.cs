@@ -42,5 +42,7 @@ namespace InternetBanking.Model
 
         [DefaultValue(false)]
         public bool? Status { get; set; }
+
+        public ICollection<Image>? Images { get; set; }
     }
 }

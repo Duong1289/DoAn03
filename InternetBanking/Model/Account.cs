@@ -42,6 +42,7 @@ namespace InternetBanking.Model
         public ICollection<Transaction>? Transactions  { get; set; }
         
         public ICollection<HelpRequest>? HelpRequests { get; set; }
+        public ICollection<Loan>? Loans { get; set; }
 
     }
 }
