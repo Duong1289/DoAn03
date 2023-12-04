@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Model
 {
-    public class InternetBankingContext:DbContext
+    public class InternetBankingContext: IdentityDbContext<Customer>
     {
-        public InternetBankingContext(DbContextOptions options):base(options) 
+        public InternetBankingContext(DbContextOptions<InternetBankingContext> options):base(options) 
         {
         }
         public DbSet<Account>? Accounts { get; set; }
@@ -26,5 +27,18 @@ namespace InternetBanking.Model
         public DbSet<Loan>? Loans { get; set; }
         public DbSet<LoanType>? LoanTypes { get; set; }
     }
-    
+``    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+        //cắt bỏ chữ AspNet trong tên của table
+        var entities = builder.Model.GetEntityTypes();
+        foreach (var entityType in entities)
+        {
+            string name = entityType.Name;
+            if (name!.StartsWith("AspNet"))
+            {
+                entityType.SetTableName(name.Substring(6));
+            }
+        }
+    }
 }
