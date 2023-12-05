@@ -15,5 +15,6 @@ namespace InternetBanking.Model
         public string? LoanName { get; set; }
 
         public ICollection<Loan>? Loans { get; set; }
+    
     }
 }

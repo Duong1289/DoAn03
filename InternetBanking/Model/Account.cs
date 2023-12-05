@@ -43,6 +43,7 @@ namespace InternetBanking.Model
         
         public ICollection<HelpRequest>? HelpRequests { get; set; }
         public ICollection<Loan>? Loans { get; set; }
+        public ICollection<Otp>? OTPS { get; set; }
 
     }
 }

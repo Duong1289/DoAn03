@@ -45,6 +45,13 @@ namespace InternetBanking.Model
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? CreatedDate { get; set; }= DateTime.Now;
+        
+
+        //navigation property
+        public ServiceType? ServiceType { get; set; }
+        public Employee? Employee { get; set; }
+        public Customer? Customer { get; set; }
+        public Account? Account { get; set; }
 
     }
 }

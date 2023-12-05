@@ -4,6 +4,7 @@ using InternetBanking.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternetBanking.Migrations
 {
     [DbContext(typeof(InternetBankingContext))]
-    partial class InternetBankingContextModelSnapshot : ModelSnapshot
+    [Migration("20231205122452_add-OTP-Model")]
+    partial class addOTPModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -608,9 +611,6 @@ namespace InternetBanking.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("AccountNumber1")
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<bool?>("Status")
                         .IsRequired()
                         .HasColumnType("bit");
@@ -621,11 +621,6 @@ namespace InternetBanking.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Code");
-
-                    b.HasIndex("AccountNumber1");
-
-                    b.HasIndex("TransactionId")
-                        .IsUnique();
 
                     b.ToTable("OTPs");
                 });
@@ -717,6 +712,9 @@ namespace InternetBanking.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("AccountNumber")
+                        .HasColumnType("nvarchar(20)");
+
                     b.Property<double?>("Amount")
                         .IsRequired()
                         .HasColumnType("float");
@@ -729,9 +727,6 @@ namespace InternetBanking.Migrations
                     b.Property<string>("ReceiverAccountNumber")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("SenderAccountAccountNumber")
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("SenderAccountNumber")
@@ -747,7 +742,7 @@ namespace InternetBanking.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SenderAccountAccountNumber");
+                    b.HasIndex("AccountNumber");
 
                     b.ToTable("Transactions");
                 });
@@ -929,56 +924,42 @@ namespace InternetBanking.Migrations
 
             modelBuilder.Entity("InternetBanking.Model.HelpRequest", b =>
                 {
-                    b.HasOne("InternetBanking.Model.Account", "Account")
+                    b.HasOne("InternetBanking.Model.Account", null)
                         .WithMany("HelpRequests")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("InternetBanking.Model.Customer", "Customer")
+                    b.HasOne("InternetBanking.Model.Customer", null)
                         .WithMany("HelpRequests")
                         .HasForeignKey("CustomerPersonalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("InternetBanking.Model.Employee", "Employee")
+                    b.HasOne("InternetBanking.Model.Employee", null)
                         .WithMany("HelpRequests")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("InternetBanking.Model.HelpRequestType", "HelpRequestType")
+                    b.HasOne("InternetBanking.Model.HelpRequestType", null)
                         .WithMany("HelpRequests")
                         .HasForeignKey("HelpRequestTypeRequestTypeId");
-
-                    b.Navigation("Account");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("HelpRequestType");
                 });
 
             modelBuilder.Entity("InternetBanking.Model.Image", b =>
                 {
-                    b.HasOne("InternetBanking.Model.Customer", "Customer")
+                    b.HasOne("InternetBanking.Model.Customer", null)
                         .WithMany("Images")
                         .HasForeignKey("CustomerId");
 
-                    b.HasOne("InternetBanking.Model.Employee", "Employee")
+                    b.HasOne("InternetBanking.Model.Employee", null)
                         .WithMany("Images")
                         .HasForeignKey("EmployeeId1");
 
-                    b.HasOne("InternetBanking.Model.HelpRequest", "HelpRequest")
+                    b.HasOne("InternetBanking.Model.HelpRequest", null)
                         .WithMany("Images")
                         .HasForeignKey("HelpRequestId");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("HelpRequest");
                 });
 
             modelBuilder.Entity("InternetBanking.Model.Loan", b =>
@@ -1008,61 +989,36 @@ namespace InternetBanking.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("InternetBanking.Model.Otp", b =>
-                {
-                    b.HasOne("InternetBanking.Model.Account", null)
-                        .WithMany("OTPS")
-                        .HasForeignKey("AccountNumber1");
-
-                    b.HasOne("InternetBanking.Model.Transaction", "Transaction")
-                        .WithOne("OTP")
-                        .HasForeignKey("InternetBanking.Model.Otp", "TransactionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Transaction");
-                });
-
             modelBuilder.Entity("InternetBanking.Model.Service", b =>
                 {
-                    b.HasOne("InternetBanking.Model.Account", "Account")
+                    b.HasOne("InternetBanking.Model.Account", null)
                         .WithMany("Services")
                         .HasForeignKey("AccountNumber1");
 
-                    b.HasOne("InternetBanking.Model.Customer", "Customer")
+                    b.HasOne("InternetBanking.Model.Customer", null)
                         .WithMany("Services")
                         .HasForeignKey("CustomerPersonalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("InternetBanking.Model.Employee", "Employee")
+                    b.HasOne("InternetBanking.Model.Employee", null)
                         .WithMany("Services")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("InternetBanking.Model.ServiceType", "ServiceType")
+                    b.HasOne("InternetBanking.Model.ServiceType", null)
                         .WithMany("Services")
                         .HasForeignKey("ServiceTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Account");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("ServiceType");
                 });
 
             modelBuilder.Entity("InternetBanking.Model.Transaction", b =>
                 {
-                    b.HasOne("InternetBanking.Model.Account", "SenderAccount")
+                    b.HasOne("InternetBanking.Model.Account", null)
                         .WithMany("Transactions")
-                        .HasForeignKey("SenderAccountAccountNumber");
-
-                    b.Navigation("SenderAccount");
+                        .HasForeignKey("AccountNumber");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1121,8 +1077,6 @@ namespace InternetBanking.Migrations
                     b.Navigation("HelpRequests");
 
                     b.Navigation("Loans");
-
-                    b.Navigation("OTPS");
 
                     b.Navigation("Services");
 
@@ -1193,11 +1147,6 @@ namespace InternetBanking.Migrations
             modelBuilder.Entity("InternetBanking.Model.ServiceType", b =>
                 {
                     b.Navigation("Services");
-                });
-
-            modelBuilder.Entity("InternetBanking.Model.Transaction", b =>
-                {
-                    b.Navigation("OTP");
                 });
 #pragma warning restore 612, 618
         }

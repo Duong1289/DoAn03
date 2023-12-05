@@ -34,5 +34,9 @@ namespace InternetBanking.Model
 
         public bool Validation { get; set; }
 
+        public Otp? OTP { get; set; }
+        public Account? SenderAccount { get; set; }
+       
+
     }
 }

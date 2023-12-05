@@ -28,6 +28,10 @@ namespace InternetBanking.Model
         [MaxLength(20)]
         public string? Type { get; set; }
 
+        public HelpRequest? HelpRequest { get; set; }
+        public Customer? Customer { get; set; }
+        public Employee? Employee { get; set; }
+
        
     }
 }

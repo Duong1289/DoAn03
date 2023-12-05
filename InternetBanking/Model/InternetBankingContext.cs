@@ -21,10 +21,10 @@ namespace InternetBanking.Model
         public DbSet<Service>? Services { get; set; }
         public DbSet<ServiceType>? ServicesTypes { get; set; }
         public DbSet<Transaction>? Transactions { get; set; }
-
         public DbSet<Image>? Images { get; set; }
         public DbSet<Loan>? Loans { get; set; }
         public DbSet<LoanType>? LoanTypes { get; set; }
+        public DbSet<Otp> OTPs { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

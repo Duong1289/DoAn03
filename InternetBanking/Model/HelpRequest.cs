@@ -41,6 +41,11 @@ namespace InternetBanking.Model
         [DefaultValue(false)]
         public bool? Status { get; set; }
 
+
+        public Customer? Customer { get; set; }
+        public Employee? Employee { get; set; }
+        public Account? Account { get; set; }
+        public HelpRequestType? HelpRequestType { get; set; }
         public ICollection<Image>? Images { get; set; }
     }
 }
