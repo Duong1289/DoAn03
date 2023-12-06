@@ -11,55 +11,55 @@ namespace InternetBanking.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServicesController : ControllerBase
+    public class CustomersController : ControllerBase
     {
         private readonly InternetBankingContext _context;
 
-        public ServicesController(InternetBankingContext context)
+        public CustomersController(InternetBankingContext context)
         {
             _context = context;
         }
 
-        // GET: api/Services
+        // GET: api/Customers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Service>>> GetServices()
+        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
         {
-          if (_context.Services == null)
+          if (_context.Customers == null)
           {
               return NotFound();
           }
-            return await _context.Services.ToListAsync();
+            return await _context.Customers.ToListAsync();
         }
 
-        // GET: api/Services/5
+        // GET: api/Customers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Service>> GetService(int? id)
+        public async Task<ActionResult<Customer>> GetCustomer(int? id)
         {
-          if (_context.Services == null)
+          if (_context.Customers == null)
           {
               return NotFound();
           }
-            var service = await _context.Services.FindAsync(id);
+            var customer = await _context.Customers.FindAsync(id);
 
-            if (service == null)
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return service;
+            return customer;
         }
 
-        // PUT: api/Services/5
+        // PUT: api/Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutService(int? id, Service service)
+        public async Task<IActionResult> PutCustomer(int? id, Customer customer)
         {
-            if (id != service.Id)
+            if (id != customer.PersonalId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(service).State = EntityState.Modified;
+            _context.Entry(customer).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +67,7 @@ namespace InternetBanking.Controller
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ServiceExists(id))
+                if (!CustomerExists(id))
                 {
                     return NotFound();
                 }
@@ -80,44 +80,44 @@ namespace InternetBanking.Controller
             return NoContent();
         }
 
-        // POST: api/Services
+        // POST: api/Customers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Service>> PostService(Service service)
+        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
-          if (_context.Services == null)
+          if (_context.Customers == null)
           {
-              return Problem("Entity set 'InternetBankingContext.Services'  is null.");
+              return Problem("Entity set 'InternetBankingContext.Customers'  is null.");
           }
-            _context.Services.Add(service);
+            _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetService", new { id = service.Id }, service);
+            return CreatedAtAction("GetCustomer", new { id = customer.PersonalId }, customer);
         }
 
-        // DELETE: api/Services/5
+        // DELETE: api/Customers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteService(int? id)
+        public async Task<IActionResult> DeleteCustomer(int? id)
         {
-            if (_context.Services == null)
+            if (_context.Customers == null)
             {
                 return NotFound();
             }
-            var service = await _context.Services.FindAsync(id);
-            if (service == null)
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            _context.Services.Remove(service);
+            _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ServiceExists(int? id)
+        private bool CustomerExists(int? id)
         {
-            return (_context.Services?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Customers?.Any(e => e.PersonalId == id)).GetValueOrDefault();
         }
     }
 }
