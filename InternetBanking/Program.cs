@@ -31,7 +31,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 });
 builder.Services.AddOptions();
-builder.Services.AddIdentity<Customer, IdentityRole>()
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<InternetBankingContext>()
     .AddDefaultTokenProviders();
 
