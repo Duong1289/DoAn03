@@ -19,11 +19,21 @@ namespace InternetBanking.Controller
         [HttpGet]
         public async Task<ActionResult<List<Branch>>> GetBranches()
         {
-          if (_context.Branches == null)
-          {
-              return NotFound();
-          }
-            return Ok( await _context.Branches.ToListAsync());
+            //if (_context.Branches == null)
+            //{
+            //    return NotFound();
+            //}
+            //  return Ok( await _context.Branches.ToListAsync());
+            var branches = await _context.Branches
+       .Include(b => b.Employees) // Include the Employees navigation property
+       .ToListAsync();
+
+            if (branches == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(branches);
         }
 
         // GET: api/Branches/5

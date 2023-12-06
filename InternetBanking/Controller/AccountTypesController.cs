@@ -13,7 +13,7 @@ namespace InternetBanking.Controller
     [ApiController]
     public class AccountTypesController : ControllerBase
     {
-        private readonly InternetBankingContext _context;
+        InternetBankingContext _context;
 
         public AccountTypesController(InternetBankingContext context)
         {

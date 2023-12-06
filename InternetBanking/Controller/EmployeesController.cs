@@ -13,7 +13,7 @@ namespace InternetBanking.Controller
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly InternetBankingContext _context;
+        InternetBankingContext _context;
 
         public EmployeesController(InternetBankingContext context)
         {

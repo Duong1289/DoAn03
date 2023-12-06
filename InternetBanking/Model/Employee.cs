@@ -40,7 +40,7 @@ namespace InternetBanking.Model
         [MaxLength(5)]
         public string? RoleId { get; set; }
 
-        [Required]
+        
         [MaxLength(5)]
         [ForeignKey(nameof(Id))]
         public string? ManageBy { get; set;}

@@ -11,55 +11,55 @@ namespace InternetBanking.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class BanksController : ControllerBase
     {
         InternetBankingContext _context;
 
-        public CustomersController(InternetBankingContext context)
+        public BanksController(InternetBankingContext context)
         {
             _context = context;
         }
 
-        // GET: api/Customers
+        // GET: api/Banks
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
+        public async Task<ActionResult<List<Bank>>> GetBanks()
         {
-          if (_context.Customers == null)
+          if (_context.Banks == null)
           {
               return NotFound();
           }
-            return await _context.Customers.ToListAsync();
+            return Ok( await _context.Banks.ToListAsync());
         }
 
-        // GET: api/Customers/5
+        // GET: api/Banks/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(int? id)
+        public async Task<ActionResult<Bank>> GetBank(int? id)
         {
-          if (_context.Customers == null)
+          if (_context.Banks == null)
           {
               return NotFound();
           }
-            var customer = await _context.Customers.FindAsync(id);
+            var bank = await _context.Banks.FindAsync(id);
 
-            if (customer == null)
+            if (bank == null)
             {
                 return NotFound();
             }
 
-            return customer;
+            return bank;
         }
 
-        // PUT: api/Customers/5
+        // PUT: api/Banks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCustomer(int? id, Customer customer)
+        public async Task<IActionResult> PutBank(int? id, Bank bank)
         {
-            if (id != customer.PersonalId)
+            if (id != bank.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(customer).State = EntityState.Modified;
+            _context.Entry(bank).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +67,7 @@ namespace InternetBanking.Controller
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(id))
+                if (!BankExists(id))
                 {
                     return NotFound();
                 }
@@ -80,44 +80,44 @@ namespace InternetBanking.Controller
             return NoContent();
         }
 
-        // POST: api/Customers
+        // POST: api/Banks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
+        public async Task<ActionResult<Bank>> PostBank(Bank bank)
         {
-          if (_context.Customers == null)
+          if (_context.Banks == null)
           {
-              return Problem("Entity set 'InternetBankingContext.Customers'  is null.");
+              return Problem("Entity set 'InternetBankingContext.Banks'  is null.");
           }
-            _context.Customers.Add(customer);
+            _context.Banks.Add(bank);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCustomer", new { id = customer.PersonalId }, customer);
+            return CreatedAtAction("GetBank", new { id = bank.Id }, bank);
         }
 
-        // DELETE: api/Customers/5
+        // DELETE: api/Banks/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCustomer(int? id)
+        public async Task<IActionResult> DeleteBank(int? id)
         {
-            if (_context.Customers == null)
+            if (_context.Banks == null)
             {
                 return NotFound();
             }
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
+            var bank = await _context.Banks.FindAsync(id);
+            if (bank == null)
             {
                 return NotFound();
             }
 
-            _context.Customers.Remove(customer);
+            _context.Banks.Remove(bank);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool CustomerExists(int? id)
+        private bool BankExists(int? id)
         {
-            return (_context.Customers?.Any(e => e.PersonalId == id)).GetValueOrDefault();
+            return (_context.Banks?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

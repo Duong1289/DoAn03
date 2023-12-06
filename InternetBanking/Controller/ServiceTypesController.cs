@@ -13,7 +13,7 @@ namespace InternetBanking.Controller
     [ApiController]
     public class ServiceTypesController : ControllerBase
     {
-        private readonly InternetBankingContext _context;
+        InternetBankingContext _context;
 
         public ServiceTypesController(InternetBankingContext context)
         {
