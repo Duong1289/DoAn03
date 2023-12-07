@@ -13,7 +13,7 @@ namespace InternetBanking.Controller
     [ApiController]
     public class AccountsController : ControllerBase
     {
-        private readonly InternetBankingContext _context;
+        InternetBankingContext _context;
 
         public AccountsController(InternetBankingContext context)
         {
@@ -33,7 +33,7 @@ namespace InternetBanking.Controller
 
         // GET: api/Accounts/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Account?>> GetAccount(string id)
+        public async Task<ActionResult<Account>> GetAccount(string id)
         {
           if (_context.Accounts == null)
           {

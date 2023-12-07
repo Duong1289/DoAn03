@@ -13,7 +13,7 @@ namespace InternetBanking.Controller
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly InternetBankingContext _context;
+        InternetBankingContext _context;
 
         public EmployeesController(InternetBankingContext context)
         {
@@ -33,7 +33,7 @@ namespace InternetBanking.Controller
 
         // GET: api/Employees/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> GetEmployee(int? id)
+        public async Task<ActionResult<Employee>> GetEmployee(string id)
         {
           if (_context.Employees == null)
           {
@@ -52,7 +52,7 @@ namespace InternetBanking.Controller
         // PUT: api/Employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(string? id, Employee employee)
+        public async Task<IActionResult> PutEmployee(string id, Employee employee)
         {
             if (id != employee.Id)
             {
@@ -90,14 +90,28 @@ namespace InternetBanking.Controller
               return Problem("Entity set 'InternetBankingContext.Employees'  is null.");
           }
             _context.Employees.Add(employee);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (EmployeeExists(employee.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
         }
 
         // DELETE: api/Employees/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmployee(int? id)
+        public async Task<IActionResult> DeleteEmployee(string id)
         {
             if (_context.Employees == null)
             {
@@ -115,7 +129,7 @@ namespace InternetBanking.Controller
             return NoContent();
         }
 
-        private bool EmployeeExists(string? id)
+        private bool EmployeeExists(string id)
         {
             return (_context.Employees?.Any(e => e.Id == id)).GetValueOrDefault();
         }
