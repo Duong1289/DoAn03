@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace InternetBanking.Model
 {
-    public class InternetBankingContext: IdentityDbContext<Customer>
+    public class InternetBankingContext: IdentityDbContext
     {
         public InternetBankingContext(DbContextOptions<InternetBankingContext> options):base(options) 
         {

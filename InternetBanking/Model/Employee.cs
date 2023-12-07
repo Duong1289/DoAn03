@@ -6,7 +6,7 @@ namespace InternetBanking.Model
     public class Employee
     {
         [Key]
-        public int? Id { get; set; }
+        public string? Id { get; set; }
         
         [Required]
         [MaxLength(20)]
@@ -40,7 +40,7 @@ namespace InternetBanking.Model
         [MaxLength(5)]
         public string? RoleId { get; set; }
 
-        [Required]
+        
         [MaxLength(5)]
         [ForeignKey(nameof(Id))]
         public string? ManageBy { get; set;}

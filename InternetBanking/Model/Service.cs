@@ -34,7 +34,7 @@ namespace InternetBanking.Model
         [ForeignKey("Accounts")]
         [Required]
         [MaxLength(20)]
-        public string? AccountNumber { get; set;}
+        public string? ServiceAccountNumber { get; set;}
 
 
         [ForeignKey("Customers")]

@@ -5,13 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InternetBanking.Model
 {
-    public class Customer : IdentityUser
+    public class Customer
     {
         //CCCD
         [Key]
         [Required]
         [MaxLength(20)]
-        public string? PersonalId { get; set; }
+        public int? PersonalId { get; set; }
 
         [Required]
         [MaxLength(20)]
