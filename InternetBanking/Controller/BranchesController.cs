@@ -25,8 +25,8 @@ namespace InternetBanking.Controller
             //}
             //  return Ok( await _context.Branches.ToListAsync());
             var branches = await _context.Branches
-       .Include(b => b.Employees) // Include the Employees navigation property
-       .ToListAsync();
+           .Include(b => b.Employees) // Include the Employees navigation property
+           .ToListAsync();
 
             if (branches == null)
             {
