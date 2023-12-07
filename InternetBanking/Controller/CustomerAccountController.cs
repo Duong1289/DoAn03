@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace InternetBanking.Controllers
+namespace InternetBanking.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
