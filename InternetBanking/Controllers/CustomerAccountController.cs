@@ -40,7 +40,7 @@ namespace InternetBanking.Controllers
             return account;
         }
         //Update account
-        // PUT: api/Employees/5
+        // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAccount(string? id, Account account)
@@ -68,7 +68,7 @@ namespace InternetBanking.Controllers
             return NoContent();
         }
         //Create Account
-        // POST: api/Employees
+        // POST: api/Accounts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Employee>> PostAccount(Account account)
@@ -81,7 +81,7 @@ namespace InternetBanking.Controllers
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetAccount", new { id = account.AccountNumber }, account);
         }
-        // DELETE: api/Employees/5
+        // DELETE: api/Accounts/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAccount(string? id)
         {
