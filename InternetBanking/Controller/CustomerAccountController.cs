@@ -79,7 +79,7 @@ namespace InternetBanking.Controller
             }
             _context.Accounts.Add(account);
             await _context.SaveChangesAsync();
-            return CreatedAtAction("GetAccount", new { id = account.AccountNumber }, account);
+            return CreatedAtAction("GetAccounts", new { id = account.AccountNumber }, account);
         }
         // DELETE: api/Accounts/5
         [HttpDelete("{id}")]

@@ -44,5 +44,27 @@ namespace InternetBanking.Controller
                 throw new Exception($"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpGet]
+        [Route("view-statement/{id}")]
+        public async Task<IActionResult> GetStatementById(int id)
+        {
+            try
+            {
+                var statement = await context.Transactions.FindAsync(id);
+                if (statement == null)
+                {
+                    return NotFound("Statement not found");
+                }
+
+                return Ok(statement);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Internal server error: {ex.Message}");
+            }
+        }
+
+
     }
 }
