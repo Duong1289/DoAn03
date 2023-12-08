@@ -12,12 +12,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternetBanking.Migrations
 {
     [DbContext(typeof(InternetBankingContext))]
+<<<<<<< HEAD
 <<<<<<<< HEAD:InternetBanking/Migrations/20231206032433_v2.Designer.cs
 <<<<<<<< HEAD:InternetBanking/Migrations/20231204133212_v1.Designer.cs
     [Migration("20231204133212_v1")]
 ========
     [Migration("20231204131319_v1")]
 >>>>>>>> parent of 1dabe02 (manage customer controller):InternetBanking/Migrations/20231204131319_v1.Designer.cs
+=======
+    [Migration("20231204131319_v1")]
+>>>>>>> parent of 1dabe02 (manage customer controller)
     partial class v1
 ========
     [Migration("20231206032433_v2")]
